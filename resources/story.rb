@@ -20,15 +20,7 @@ class Story
 
 	def loop_story
 		loop do
-			system( "clear" )
-			puts "Noticiero NO::FACE"
-			puts
-			puts "1. Mostrar todas las noticias."
-			puts "2. Mostrar por distribuidor de noticias." 
-			puts "3. Salir."
-			puts "Ingrese una opcion: "
-			op = getInteger("",0,5)
-
+			op = menu('Noticiero NO::FAKE','Mostrar todas las noticias.','Mostrar por distribuidor de noticias.','Salir')
 			case op
 				when 1 then
 					all_news
@@ -46,16 +38,7 @@ class Story
 
 	def for_distributor
 		loop do
-			system( "clear" )
-			puts "Noticieros NO::FACE"
-			puts
-			puts "1. Reddit."
-			puts "2. Mashable."
-			puts "3. Digg."
-			puts "4. Volver."
-			puts "Ingrese una opcion: "
-			op = getInteger("",0,5)
-			puts op
+			op = menu("Noticiero NO::FAKE\n\tPor Noticias",'Reddit','Mashable','Digg','Volver')
 			case op
 				when 1 then
 					toView(@distributors[:reddit].news)
@@ -89,10 +72,10 @@ class Story
 
 		loop do
 			system('clear')
-			puts "Noticiero NO::FACE"	
+			puts "Noticiero NO::FAKE"	
 			puts "#{'Titulo'.center(35,(' '))} #{'Autor'.center(20,(' '))}#{'Fecha'.center(20,(' '))}".on_blue
 
-			for i in init..fin do
+			(init..fin).each do | i |
 				if i == on then
 					puts "  #{(list_news[i].article[:title][0..35]).ljust(40,' ')} #{list_news[i].article[:author][0..15].ljust(20,' ')} #{list_news[i].article[:date].ljust(10,' ')}".white.on_red
 				else
